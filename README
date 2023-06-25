@@ -1,1 +1,8 @@
 docker run --rm -v $(pwd)/web:/app composer install
+
+Docelowo rezerwacja byłaby podpinana pod Ticket jako potwierdzenie nabycia, w momencie zatwierdzania rezerwacji sprawdzane by było, czy Showing o podanym ID startuje za mniej niż 30 minut i jeżeli tak to rzucany byłby jakiś domenowy wyjątek.
+
+W kodzie pojawiają się komentarze pokazujące co jeszcze można by było zaimplementować w danym miejscu.
+
+Dodać jeszcze EventBus i w ReservationService publish eventów 
+a event stworzyć w momencie utworzenia Aggregatu Reservation ->

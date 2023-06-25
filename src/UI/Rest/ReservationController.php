@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\UI\Rest;
 
+use App\Cinema\Reservation\Application\CreateReservationCommand;
 use App\Cinema\Reservation\Application\ReservationService;
 use App\Cinema\Reservation\Validator\ReservationValidator;
-use App\Shared\Showing\Infrastructure\ShowingRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Shared\Infrastructure\Common\ApiController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ReservationController extends AbstractController
+class ReservationController extends ApiController
 {
     #[Route('/api/reservation', name: 'app_reservation_create', methods: ['POST'])]
     public function createAction(
@@ -25,9 +25,7 @@ class ReservationController extends AbstractController
 
         $validator->validate($parameters);
 
-        $x = $reservationService->create($parameters);
-
-        dump($x);
+        $this->dispatch(new CreateReservationCommand($parameters));
 
         return new Response(
             '<html><body>test</body></html>'

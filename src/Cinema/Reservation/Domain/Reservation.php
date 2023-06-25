@@ -19,6 +19,8 @@ final class Reservation extends AggregateRoot
     {
         $this->showing = $showing;
         $this->seats = $seats;
+
+        // TODO: $this->record() - utworzenie kursu
     }
 
     public function getShowing(): Showing

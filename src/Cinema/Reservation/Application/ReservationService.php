@@ -15,7 +15,7 @@ class ReservationService
     ) {
     }
 
-    public function create(array $reservationData) /** response? */
+    public function create(array $reservationData) /** TODO: ReservationCreateResponse */
     {
         try {
             $reservation = $this->reservationBuilder->buildFromArray(
@@ -24,12 +24,11 @@ class ReservationService
 
             $this->reservationRepository->add($reservation);
             // $this->eventPublisher->publish($payment->pullEvents());
-            return $reservation;
+            return $reservation; // todo: ReservationCreateResponse -> status OK
         } catch (\Exception $exception) {
             // log exception
         }
 
-        // return failure response
-        return $reservation; // todo: write failure response
+        return $reservation; // todo: ReservationCreateResponse -> status FAIL
     }
 }
