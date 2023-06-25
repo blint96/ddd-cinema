@@ -25,10 +25,15 @@ class ReservationController extends ApiController
 
         $validator->validate($parameters);
 
+        // Tutaj do komendy dodałbym UUID
         $this->dispatch(new CreateReservationCommand($parameters));
 
+        // Tutaj query o reservation z UUID podanym wyżej
+        // $reservation = $this->queryBus->query('UUID wygenerowany wczesniej')
+
+        // Zwrotka zawierająca dane utworzonego agregatu, lub 201 Created z pustym body
         return new Response(
-            '<html><body>test</body></html>'
+            '<html><body>Example response</body></html>'
         );
     }
 }
