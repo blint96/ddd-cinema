@@ -1,0 +1,1 @@
+docker run --rm -v $(pwd)/web:/app composer install
